@@ -11,7 +11,7 @@ public class PlayfairCipher implements Cipher {
     private char[][] matrix;
     private Map<Character, int[]> charPositions;
 
-    public PlayfairCipher(String key) {
+    public void setKey(String key) {
         generateMatrix(key);
     }
 
@@ -50,6 +50,9 @@ public class PlayfairCipher implements Cipher {
 
     @Override
     public String encrypt(String input) {
+        if (charPositions == null) {
+            throw new IllegalStateException("charPositions map is not initialized");
+        }
         input = preprocessInput(input);
         StringBuilder encrypted = new StringBuilder();
 
@@ -76,6 +79,9 @@ public class PlayfairCipher implements Cipher {
 
     @Override
     public String decrypt(String input) {
+        if (charPositions == null) {
+            throw new IllegalStateException("charPositions map is not initialized");
+        }
         StringBuilder decrypted = new StringBuilder();
 
         for (int i = 0; i < input.length(); i += 2) {

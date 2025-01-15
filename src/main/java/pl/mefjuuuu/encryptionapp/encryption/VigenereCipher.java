@@ -1,12 +1,11 @@
 package pl.mefjuuuu.encryptionapp.encryption;
 
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class VigenereCipher implements Cipher {
 
-    private final String key;
-
+    private String key = "key";
 
     @Override
     public String encrypt(String input) {
